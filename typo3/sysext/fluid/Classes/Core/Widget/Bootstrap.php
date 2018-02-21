@@ -52,6 +52,9 @@ class Bootstrap
         $widgetContext = $ajaxWidgetContextHolder->get($widgetIdentifier);
         $configuration['extensionName'] = $widgetContext->getParentExtensionName();
         $configuration['pluginName'] = $widgetContext->getParentPluginName();
+        if ($configuration['pluginName']=="")
+            $configuration['pluginName']  = "_";
+
         $extbaseBootstrap = $this->objectManager->get(\TYPO3\CMS\Extbase\Core\Bootstrap::class);
         $extbaseBootstrap->cObj = $this->cObj;
         return $extbaseBootstrap->run($content, $configuration);
